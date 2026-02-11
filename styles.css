@@ -189,6 +189,42 @@ img{ max-width:100%; display:block; }
   text-shadow: 0 2px 12px rgba(0,0,0,0.8), 0 1px 3px rgba(0,0,0,0.9);
 }
 
+/* =========================================================
+   HERO LAYOUT: actions + badges (espaciado y responsive)
+   ========================================================= */
+.hero-actions{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+  margin-bottom: 44px; /* <-- esto separa de hero-badges */
+}
+
+.hero-badges{
+  margin-top: 0;        /* ya lo separa hero-actions */
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.badge{
+  padding: 14px 14px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 16px;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+}
+
+/* En móvil: que los badges no se aplasten */
+@media (max-width: 820px){
+  .hero-badges{
+    grid-template-columns: 1fr;
+  }
+  .hero-actions{
+    margin-bottom: 28px;
+  }
+}
+
 .hero p,
 .hero .pill,
 .hero .lead,
@@ -213,7 +249,7 @@ img{ max-width:100%; display:block; }
    SECTIONS
    ========================================================= */
 section{
-  padding:6rem 0;
+  padding:2rem 0;
 }
 
 .section-title{
@@ -228,6 +264,17 @@ section{
 }
 
 /* =========================================================
+   TWO COLUMN LAYOUT
+   ========================================================= */
+
+.two-col{
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 20px;
+  align-items: start;
+}
+
+/* =========================================================
    CARDS
    ========================================================= */
 .cards{
@@ -235,6 +282,7 @@ section{
   grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
   gap:22px;
   margin-top:3rem;
+  margin-bottom:3rem; /* ← agrega esta línea */;
 }
 
 .card{
@@ -283,6 +331,32 @@ section{
 }
 .gallery img:hover{
   transform:scale(1.05);
+}
+
+/* =========================================================
+   MEDIA (IMAGENES EN SECCION HISTORIA)
+   ========================================================= */
+
+.media{
+  position: relative;
+}
+
+.media img{
+  border-radius: 24px;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.55);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: transform 0.4s ease;
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+}
+
+.media img:hover{
+  transform: scale(1.015);
+}
+
+.media-caption{
+  margin-top: 14px;
+  font-size: 0.9rem;
+  color: var(--muted);
 }
 
 /* =========================================================
