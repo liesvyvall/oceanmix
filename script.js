@@ -174,6 +174,39 @@
   }
 
   // =========================================================
+  // TESTIMONIALS CAROUSEL
+  // =========================================================
+  const testimonials = document.querySelectorAll('.testimonial');
+  const tDots = document.querySelectorAll('.t-dot');
+
+  if (testimonials.length > 1) {
+    let currentT = 0;
+    let autoPlay;
+
+    const showTestimonial = (index) => {
+      testimonials.forEach(t => t.classList.remove('active'));
+      tDots.forEach(d => d.classList.remove('active'));
+      testimonials[index].classList.add('active');
+      tDots[index].classList.add('active');
+      currentT = index;
+    };
+
+    tDots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        showTestimonial(i);
+        clearInterval(autoPlay);
+        autoPlay = setInterval(() => {
+          showTestimonial((currentT + 1) % testimonials.length);
+        }, 5000);
+      });
+    });
+
+    autoPlay = setInterval(() => {
+      showTestimonial((currentT + 1) % testimonials.length);
+    }, 5000);
+  }
+
+  // =========================================================
   // SMOOTH SCROLL FOR NAV LINKS
   // =========================================================
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
