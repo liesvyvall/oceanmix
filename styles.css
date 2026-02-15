@@ -718,7 +718,7 @@ section{
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--algae);    
+  background: var(--sea);    
   flex-shrink: 0;
 }
 
